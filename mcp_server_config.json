@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "medical-scheme-server": {
+      "command": "python",
+      "args": ["-m", "src.server"],
+      "env": {
+        "HOST": "localhost",
+        "PORT": "8000",
+        "DEBUG": "true"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "check_patient_benefits",
+        "request_procedure_authorization", 
+        "submit_medical_claim",
+        "complete_patient_workflow"
+      ],
+      "description": "Medical Scheme MCP Server for South African healthcare providers",
+      "tools": [
+        {
+          "name": "check_patient_benefits",
+          "description": "Check patient medical scheme benefits for specific procedures",
+          "endpoint": "/mcp/tools/check_patient_benefits"
+        },
+        {
+          "name": "request_procedure_authorization",
+          "description": "Request pre-authorization for medical procedures",
+          "endpoint": "/mcp/tools/request_procedure_authorization"
+        },
+        {
+          "name": "submit_medical_claim", 
+          "description": "Submit medical claims for completed procedures",
+          "endpoint": "/mcp/tools/submit_medical_claim"
+        },
+        {
+          "name": "complete_patient_workflow",
+          "description": "Complete end-to-end patient workflow: benefits → auth → claims",
+          "endpoint": "/mcp/tools/complete_patient_workflow"
+        }
+      ]
+    }
+  }
+}
